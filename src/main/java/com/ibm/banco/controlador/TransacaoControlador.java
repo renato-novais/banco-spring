@@ -21,6 +21,7 @@ import java.util.List;
 @Tag(name = "Transações", description = "API de Transações")
 @RestController
 @RequestMapping("/transacoes")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TransacaoControlador {
 
     @Autowired
@@ -32,8 +33,8 @@ public class TransacaoControlador {
             @ApiResponse(responseCode = SwaggerStatusHelper.HTTP_NOT_CONTENT, description = SwaggerStatusHelper.NOT_CONTENT_STRING),
             @ApiResponse(responseCode = SwaggerStatusHelper.HTTP_OK, description = SwaggerStatusHelper.OK_STRING),
     })    @GetMapping
-    public ResponseEntity<List<Transacao>> listarTransacoesDoCliente(@RequestParam Long clienteId) {
-        List<Transacao> extratoContaCliente = transacaoServico.obterExtratoContaCliente(clienteId);
+    public ResponseEntity<List<Transacao>> listarTransacoesDoCliente(@RequestParam Long contaId) {
+        List<Transacao> extratoContaCliente = transacaoServico.obterExtratoContaCliente(contaId);
         return ResponseEntity.ok(extratoContaCliente);
     }
 

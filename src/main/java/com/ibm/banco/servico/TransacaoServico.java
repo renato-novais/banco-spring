@@ -29,8 +29,7 @@ public class TransacaoServico {
         return transacaoRepositorio.findByContaOrigemId(contaId);
     }
     public List<Transacao> obterRelatorioTransacoesDoDia(LocalDate data) {
-        LocalDate localData = LocalDate.of(2024, 5, 12); // Exemplo de data: 2024-05-12
-        LocalDateTime dataInicio = localData.atStartOfDay();
+        LocalDateTime dataInicio = data.atStartOfDay();
         LocalDateTime dataFim = dataInicio.plusDays(1).minusNanos(1);
         return transacaoRepositorio.findByDataBetween(dataInicio, dataFim);
     }
